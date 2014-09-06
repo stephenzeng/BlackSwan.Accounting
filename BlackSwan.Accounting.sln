@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlackSwan.Accounting.Core", "BlackSwan.Accounting.Core\BlackSwan.Accounting.Core.csproj", "{B7ED11E2-8CD5-4292-A9DF-4337BDFFC117}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlackSwan.Accounting.Core.Tests", "BlackSwan.Accounting.Core.Tests\BlackSwan.Accounting.Core.Tests.csproj", "{9AD75559-ACE8-4178-A00F-938DD814DB04}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B7ED11E2-8CD5-4292-A9DF-4337BDFFC117}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7ED11E2-8CD5-4292-A9DF-4337BDFFC117}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7ED11E2-8CD5-4292-A9DF-4337BDFFC117}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7ED11E2-8CD5-4292-A9DF-4337BDFFC117}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9AD75559-ACE8-4178-A00F-938DD814DB04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9AD75559-ACE8-4178-A00F-938DD814DB04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9AD75559-ACE8-4178-A00F-938DD814DB04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9AD75559-ACE8-4178-A00F-938DD814DB04}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
