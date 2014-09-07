@@ -4,7 +4,7 @@ namespace BlackSwan.Accounting.Core
 {
     public class TaxCalculator
     {
-        public decimal CalculatorIncomeTax(decimal annaulIncome)
+        public decimal CalculateIncomeTax(decimal annaulIncome)
         {
             var rates = new[]
                 {
@@ -25,6 +25,13 @@ namespace BlackSwan.Accounting.Core
             }
 
             return tax;
+        }
+
+        public decimal CalculateMedicareLevy(decimal annaulIncome)
+        {
+            var rate = 0.02m;
+
+            return annaulIncome*rate;
         }
     }
 }
