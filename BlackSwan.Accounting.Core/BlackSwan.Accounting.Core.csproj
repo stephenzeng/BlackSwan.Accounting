@@ -45,8 +45,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TaxCalculator.cs" />
+    <Compile Include="TaxCalculatorFrom2014To2015.cs" />
     <Compile Include="TaxRate.cs" />
+    <Compile Include="TaxRatesFrom2014To2015.cs" />
+    <Compile Include="TemporaryBudgetRepairLevyRate.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
