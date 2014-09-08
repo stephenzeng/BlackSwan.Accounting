@@ -33,5 +33,12 @@ namespace BlackSwan.Accounting.Core
 
             return annaulIncome*rate;
         }
+
+        public decimal CalculateTemporaryBudgetRepairLevy(decimal annaulIncome)
+        {
+            var rate = 0.02m;
+            var startFrom = 180000m;
+            return (annaulIncome - startFrom)*rate;
+        }
     }
 }

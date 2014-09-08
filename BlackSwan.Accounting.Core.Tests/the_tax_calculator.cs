@@ -70,8 +70,19 @@ namespace BlackSwan.Accounting.Core.Tests
             // arrange
             var calculator = new TaxCalculator();
 
-            //assert
+            // assert
             Assert.AreEqual(2000m, calculator.CalculateMedicareLevy(100000m));
+        }
+
+        [Test]
+        public void calculate_temporary_budget_repair_levy()
+        {
+            // arrange
+            var calculator = new TaxCalculator();
+
+            // assert
+            Assert.AreEqual(0m, calculator.CalculateTemporaryBudgetRepairLevy(180000m));
+            Assert.AreEqual(400m, calculator.CalculateTemporaryBudgetRepairLevy(200000m));
         }
     }
 }
