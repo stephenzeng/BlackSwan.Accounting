@@ -1,12 +1,12 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 
-namespace BlackSwan.Accounting.Core
+namespace BlackSwan.Accounting.Core.Year2014To2015
 {
-    public class TaxRatesFrom2014To2015
+    public class TaxRates
     {
-        public TaxRatesFrom2014To2015()
+        public TaxRates()
         {
-            TaxRates = new[]
+            IncomeTaxRates = new[]
                 {
                     new TaxRate {StartAmount = 0m, Rate = 0m},
                     new TaxRate {StartAmount = 18200m, Rate = 0.19m},
@@ -31,7 +31,7 @@ namespace BlackSwan.Accounting.Core
                 };
         }
 
-        public IEnumerable<TaxRate> TaxRates { get; set; }
+        public IEnumerable<TaxRate> IncomeTaxRates { get; set; }
         public decimal MedicareLevyRate { get; set; }
         public TemporaryBudgetRepairLevyRate BudgetRepairLevyRate { get; set; }
         public LowIncomeTaxOffsetRate LowIncomeTaxOffsetRate { get; set; } 

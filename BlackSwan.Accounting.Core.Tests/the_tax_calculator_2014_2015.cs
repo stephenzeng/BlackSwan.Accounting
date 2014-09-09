@@ -1,14 +1,15 @@
-﻿using NUnit.Framework;
+﻿using BlackSwan.Accounting.Core.Year2014To2015;
+using NUnit.Framework;
 
 namespace BlackSwan.Accounting.Core.Tests
 {
-    public class the_tax_calculator
+    public class the_tax_calculator_2014_2015
     {
         [Test]
         public void calculate_from_0_to_18200()
         {
             // arrange
-            var calculator = new TaxCalculatorFrom2014To2015();
+            var calculator = new Calculator();
 
             // assert
             Assert.AreEqual(0m, calculator.CalculateIncomeTax(0m));
@@ -21,7 +22,7 @@ namespace BlackSwan.Accounting.Core.Tests
         public void calculate_from_18201_to37000()
         {
             // arrange
-            var calculator = new TaxCalculatorFrom2014To2015();
+            var calculator = new Calculator();
 
             // assert
             Assert.AreEqual(0.19m, calculator.CalculateIncomeTax(18201m));
@@ -33,7 +34,7 @@ namespace BlackSwan.Accounting.Core.Tests
         public void calculate_from_37001_to_80000()
         {
             // arrange
-            var calculator = new TaxCalculatorFrom2014To2015();
+            var calculator = new Calculator();
 
             // assert
             Assert.AreEqual(3572.325m, calculator.CalculateIncomeTax(37001m));
@@ -45,7 +46,7 @@ namespace BlackSwan.Accounting.Core.Tests
         public void calculate_from_80001_to_180000()
         {
             // arrange
-            var calculator = new TaxCalculatorFrom2014To2015();
+            var calculator = new Calculator();
 
             // assert
             Assert.AreEqual(17547.37m, calculator.CalculateIncomeTax(80001m));
@@ -57,7 +58,7 @@ namespace BlackSwan.Accounting.Core.Tests
         public void calculate_from_180001()
         {
             // arrange
-            var calculator = new TaxCalculatorFrom2014To2015();
+            var calculator = new Calculator();
             
             // assert
             Assert.AreEqual(54547.45m, calculator.CalculateIncomeTax(180001m));
@@ -68,7 +69,7 @@ namespace BlackSwan.Accounting.Core.Tests
         public void calculate_medicare_levy()
         {
             // arrange
-            var calculator = new TaxCalculatorFrom2014To2015();
+            var calculator = new Calculator();
 
             // assert
             Assert.AreEqual(2000m, calculator.CalculateMedicareLevy(100000m));
@@ -79,7 +80,7 @@ namespace BlackSwan.Accounting.Core.Tests
         public void calculate_temporary_budget_repair_levy()
         {
             // arrange
-            var calculator = new TaxCalculatorFrom2014To2015();
+            var calculator = new Calculator();
 
             // assert
             Assert.AreEqual(0m, calculator.CalculateTemporaryBudgetRepairLevy(80000m));
@@ -91,7 +92,7 @@ namespace BlackSwan.Accounting.Core.Tests
         public void calculate_tax()
         {
             // arrange
-            var calculator = new TaxCalculatorFrom2014To2015();
+            var calculator = new Calculator();
 
             // assert
             Assert.AreEqual(459947m, calculator.Calculate(1000000m));
@@ -102,7 +103,7 @@ namespace BlackSwan.Accounting.Core.Tests
         public void calculate_low_income_tax_offset()
         {
             // arrange
-            var calculator = new TaxCalculatorFrom2014To2015();
+            var calculator = new Calculator();
 
             // assert
             Assert.AreEqual(445m, calculator.CalculateLowIncomeTaxOffset(30000m));

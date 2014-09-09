@@ -44,12 +44,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="LowIncomeTaxOffsetRate.cs" />
+    <Compile Include="Year2014To2015\LowIncomeTaxOffsetRate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TaxCalculatorFrom2014To2015.cs" />
-    <Compile Include="TaxRate.cs" />
-    <Compile Include="TaxRatesFrom2014To2015.cs" />
-    <Compile Include="TemporaryBudgetRepairLevyRate.cs" />
+    <Compile Include="Year2014To2015\Calculator.cs" />
+    <Compile Include="Year2014To2015\TaxRate.cs" />
+    <Compile Include="Year2014To2015\TemporaryBudgetRepairLevyRate.cs" />
+    <Compile Include="Year2014To2015\TaxRates.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
