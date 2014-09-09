@@ -22,10 +22,18 @@ namespace BlackSwan.Accounting.Core
                     Rate = 0.02m,
                     StartAmount = 180000,
                 };
+
+            LowIncomeTaxOffsetRate = new LowIncomeTaxOffsetRate
+                {
+                    Rate = 0.015m,
+                    StartAmount = 37000m,
+                    FullTaxOffsetAmount = 445m,
+                };
         }
 
         public IEnumerable<TaxRate> TaxRates { get; set; }
         public decimal MedicareLevyRate { get; set; }
         public TemporaryBudgetRepairLevyRate BudgetRepairLevyRate { get; set; }
+        public LowIncomeTaxOffsetRate LowIncomeTaxOffsetRate { get; set; } 
     }
 }

@@ -94,7 +94,22 @@ namespace BlackSwan.Accounting.Core.Tests
             var calculator = new TaxCalculatorFrom2014To2015();
 
             // assert
-            Assert.AreEqual(540053m, calculator.Calculate(1000000m));
+            Assert.AreEqual(459947m, calculator.Calculate(1000000m));
+            Assert.AreEqual(4947m, calculator.Calculate(40000m));
+        }
+
+        [Test]
+        public void calculate_low_income_tax_offset()
+        {
+            // arrange
+            var calculator = new TaxCalculatorFrom2014To2015();
+
+            // assert
+            Assert.AreEqual(445m, calculator.CalculateLowIncomeTaxOffset(30000m));
+            Assert.AreEqual(445m, calculator.CalculateLowIncomeTaxOffset(37000m));
+            Assert.AreEqual(249.85m, calculator.CalculateLowIncomeTaxOffset(50010m));
+            Assert.AreEqual(0.01m, calculator.CalculateLowIncomeTaxOffset(66666m));
+            Assert.AreEqual(0m, calculator.CalculateLowIncomeTaxOffset(70000m));
         }
     }
 }
