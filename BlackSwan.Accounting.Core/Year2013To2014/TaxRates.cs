@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace BlackSwan.Accounting.Core.Year2014To2015
+namespace BlackSwan.Accounting.Core.Year2013To2014
 {
     public class TaxRates
     {
