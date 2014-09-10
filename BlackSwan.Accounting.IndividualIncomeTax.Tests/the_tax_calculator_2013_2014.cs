@@ -1,9 +1,9 @@
-﻿using BlackSwan.Accounting.IndividualIncomeTax.Year2014To2015;
+using BlackSwan.Accounting.IndividualIncomeTax.Year2013To2014;
 using NUnit.Framework;
 
 namespace BlackSwan.Accounting.IndividualIncomeTax.Tests
 {
-    public class the_tax_calculator_2014_2015
+    public class the_tax_calculator_2013_2014
     {
         [Test]
         public void calculate_income_tax_0_to_18200()
@@ -59,7 +59,7 @@ namespace BlackSwan.Accounting.IndividualIncomeTax.Tests
         {
             // arrange
             var calculator = new Calculator();
-            
+
             // assert
             Assert.AreEqual(54547.45m, calculator.CalculateIncomeTax(180001m));
             Assert.AreEqual(423547m, calculator.CalculateIncomeTax(1000000m));
@@ -72,19 +72,7 @@ namespace BlackSwan.Accounting.IndividualIncomeTax.Tests
             var calculator = new Calculator();
 
             // assert
-            Assert.AreEqual(2000m, calculator.CalculateMedicareLevy(100000m));
-        }
-
-        [Test]
-        public void calculate_temporary_budget_repair_levy()
-        {
-            // arrange
-            var calculator = new Calculator();
-
-            // assert
-            Assert.AreEqual(0m, calculator.CalculateTemporaryBudgetRepairLevy(80000m));
-            Assert.AreEqual(0m, calculator.CalculateTemporaryBudgetRepairLevy(180000m));
-            Assert.AreEqual(16400m, calculator.CalculateTemporaryBudgetRepairLevy(1000000m));
+            Assert.AreEqual(1500m, calculator.CalculateMedicareLevy(100000m));
         }
 
         [Test]
@@ -94,8 +82,8 @@ namespace BlackSwan.Accounting.IndividualIncomeTax.Tests
             var calculator = new Calculator();
 
             // assert
-            Assert.AreEqual(459947m, calculator.Calculate(1000000m));
-            Assert.AreEqual(4947m, calculator.Calculate(40000m));
+            Assert.AreEqual(438547, calculator.Calculate(1000000m));
+            Assert.AreEqual(4747m, calculator.Calculate(40000m));
         }
 
         [Test]
