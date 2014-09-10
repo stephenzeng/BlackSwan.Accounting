@@ -9,11 +9,11 @@ namespace BlackSwan.Accounting.IndividualIncomeTax.Year2013To2014
         {
             IncomeTaxRates = new[]
                 {
-                    new IncomeTaxRate {StartAmount = 0m, Rate = 0m},
-                    new IncomeTaxRate {StartAmount = 18200m, Rate = 0.19m},
-                    new IncomeTaxRate {StartAmount = 37000m, Rate = 0.325m},
-                    new IncomeTaxRate {StartAmount = 80000m, Rate = 0.37m},
-                    new IncomeTaxRate {StartAmount = 180000m, Rate = 0.45m},
+                    new ThresholdRate {StartAmount = 0m, Rate = 0m},
+                    new ThresholdRate {StartAmount = 18200m, Rate = 0.19m},
+                    new ThresholdRate {StartAmount = 37000m, Rate = 0.325m},
+                    new ThresholdRate {StartAmount = 80000m, Rate = 0.37m},
+                    new ThresholdRate {StartAmount = 180000m, Rate = 0.45m},
                 };
 
             MedicareLevyRate = 0.015m;
@@ -26,7 +26,7 @@ namespace BlackSwan.Accounting.IndividualIncomeTax.Year2013To2014
                 };
         }
 
-        public IEnumerable<IncomeTaxRate> IncomeTaxRates { get; set; }
+        public IEnumerable<ThresholdRate> IncomeTaxRates { get; set; }
         public decimal MedicareLevyRate { get; set; }
         public LowIncomeTaxOffsetRate LowIncomeTaxOffsetRate { get; set; }
     }

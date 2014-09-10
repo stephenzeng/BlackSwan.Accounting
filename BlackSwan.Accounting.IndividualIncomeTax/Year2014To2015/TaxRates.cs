@@ -9,18 +9,18 @@ namespace BlackSwan.Accounting.IndividualIncomeTax.Year2014To2015
         {
             IncomeTaxRates = new[]
                 {
-                    new IncomeTaxRate {StartAmount = 0m, Rate = 0m},
-                    new IncomeTaxRate {StartAmount = 18200m, Rate = 0.19m},
-                    new IncomeTaxRate {StartAmount = 37000m, Rate = 0.325m},
-                    new IncomeTaxRate {StartAmount = 80000m, Rate = 0.37m},
-                    new IncomeTaxRate {StartAmount = 180000m, Rate = 0.45m},
+                    new ThresholdRate {StartAmount = 0m, Rate = 0m},
+                    new ThresholdRate {StartAmount = 18200m, Rate = 0.19m},
+                    new ThresholdRate {StartAmount = 37000m, Rate = 0.325m},
+                    new ThresholdRate {StartAmount = 80000m, Rate = 0.37m},
+                    new ThresholdRate {StartAmount = 180000m, Rate = 0.45m},
                 };
 
             MedicareLevyRates = new[]
                 {
-                    new MedicareLevyRate {StartAmount = 0m, Rate = 0m},
-                    new MedicareLevyRate {StartAmount = 20542m, Rate = 0.1m},
-                    new MedicareLevyRate {StartAmount = 24167m, Rate = 0.02m},
+                    new ThresholdRate {StartAmount = 0m, Rate = 0m},
+                    new ThresholdRate {StartAmount = 20542m, Rate = 0.1m},
+                    new ThresholdRate {StartAmount = 24167m, Rate = 0.02m},
                 };
 
             BudgetRepairLevyRate = new TemporaryBudgetRepairLevyRate
@@ -37,8 +37,8 @@ namespace BlackSwan.Accounting.IndividualIncomeTax.Year2014To2015
                 };
         }
 
-        public IEnumerable<IncomeTaxRate> IncomeTaxRates { get; set; }
-        public IEnumerable<MedicareLevyRate> MedicareLevyRates { get; set; }
+        public IEnumerable<ThresholdRate> IncomeTaxRates { get; set; }
+        public IEnumerable<ThresholdRate> MedicareLevyRates { get; set; }
         public TemporaryBudgetRepairLevyRate BudgetRepairLevyRate { get; set; }
         public LowIncomeTaxOffsetRate LowIncomeTaxOffsetRate { get; set; } 
     }
