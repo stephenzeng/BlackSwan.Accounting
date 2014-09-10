@@ -1,4 +1,5 @@
-﻿using BlackSwan.Accounting.IndividualIncomeTax.Year2014To2015;
+﻿using System;
+using BlackSwan.Accounting.IndividualIncomeTax.Year2014To2015;
 using NUnit.Framework;
 
 namespace BlackSwan.Accounting.IndividualIncomeTax.Tests
@@ -6,110 +7,54 @@ namespace BlackSwan.Accounting.IndividualIncomeTax.Tests
     public class the_tax_calculator_2014_2015
     {
         [Test]
-        public void calculate_income_tax_0_to_18200()
+        public void throw_exception_if_not_larger_than_0()
         {
             // arrange
             var calculator = new Calculator();
 
             // assert
-            Assert.AreEqual(0m, calculator.CalculateIncomeTax(0m));
-            Assert.AreEqual(0m, calculator.CalculateIncomeTax(1m));
-            Assert.AreEqual(0m, calculator.CalculateIncomeTax(18119.5m));
-            Assert.AreEqual(0m, calculator.CalculateIncomeTax(18200m));
+            Assert.Catch<ArgumentException>(() => calculator.Calculate(-0.1m));
+            Assert.Catch<ArgumentException>(() => calculator.Calculate(0m));
         }
 
         [Test]
-        public void calculate_income_tax_18201_to37000()
+        public void calculate_tax_18000()
         {
             // arrange
             var calculator = new Calculator();
 
+            // act
+            var result = calculator.Calculate(18000.006m);
+
             // assert
-            Assert.AreEqual(0.19m, calculator.CalculateIncomeTax(18201m));
-            Assert.AreEqual(2242m, calculator.CalculateIncomeTax(30000m));
-            Assert.AreEqual(3572m, calculator.CalculateIncomeTax(37000m));
+            Assert.AreEqual(18000.01m, result.TaxableIncome);
+            Assert.AreEqual(0m, result.IncomeTax);
+            Assert.AreEqual(0m, result.MedicareLevy);
+            Assert.AreEqual(0m, result.RepairLevy);
+            Assert.AreEqual(445m, result.TaxOffset);
+            Assert.AreEqual(0m, result.TaxAfterOffset);
+            Assert.AreEqual(0m, result.TotalTaxPayable);
+            Assert.AreEqual(0m, result.AverageTaxRate);
         }
 
         [Test]
-        public void calculate_income_tax_37001_to_80000()
+        public void calculate_tax_20542()
         {
             // arrange
             var calculator = new Calculator();
 
-            // assert
-            Assert.AreEqual(3572.325m, calculator.CalculateIncomeTax(37001m));
-            Assert.AreEqual(14297m, calculator.CalculateIncomeTax(70000m));
-            Assert.AreEqual(17547m, calculator.CalculateIncomeTax(80000m));
-        }
-
-        [Test]
-        public void calculate_income_tax_80001_to_180000()
-        {
-            // arrange
-            var calculator = new Calculator();
+            // act
+            var result = calculator.Calculate(20542.004m);
 
             // assert
-            Assert.AreEqual(17547.37m, calculator.CalculateIncomeTax(80001m));
-            Assert.AreEqual(47147m, calculator.CalculateIncomeTax(160000m));
-            Assert.AreEqual(54547m, calculator.CalculateIncomeTax(180000m));
-        }
-
-        [Test]
-        public void calculate_income_tax_180001()
-        {
-            // arrange
-            var calculator = new Calculator();
-            
-            // assert
-            Assert.AreEqual(54547.45m, calculator.CalculateIncomeTax(180001m));
-            Assert.AreEqual(423547m, calculator.CalculateIncomeTax(1000000m));
-        }
-
-        [Test]
-        public void calculate_medicare_levy()
-        {
-            // arrange
-            var calculator = new Calculator();
-
-            // assert
-            Assert.AreEqual(2000m, calculator.CalculateMedicareLevy(100000m));
-        }
-
-        [Test]
-        public void calculate_temporary_budget_repair_levy()
-        {
-            // arrange
-            var calculator = new Calculator();
-
-            // assert
-            Assert.AreEqual(0m, calculator.CalculateTemporaryBudgetRepairLevy(80000m));
-            Assert.AreEqual(0m, calculator.CalculateTemporaryBudgetRepairLevy(180000m));
-            Assert.AreEqual(16400m, calculator.CalculateTemporaryBudgetRepairLevy(1000000m));
-        }
-
-        [Test]
-        public void calculate_tax()
-        {
-            // arrange
-            var calculator = new Calculator();
-
-            // assert
-            Assert.AreEqual(459947m, calculator.Calculate(1000000m));
-            Assert.AreEqual(4947m, calculator.Calculate(40000m));
-        }
-
-        [Test]
-        public void calculate_low_income_tax_offset()
-        {
-            // arrange
-            var calculator = new Calculator();
-
-            // assert
-            Assert.AreEqual(445m, calculator.CalculateLowIncomeTaxOffset(30000m));
-            Assert.AreEqual(445m, calculator.CalculateLowIncomeTaxOffset(37000m));
-            Assert.AreEqual(249.85m, calculator.CalculateLowIncomeTaxOffset(50010m));
-            Assert.AreEqual(0.01m, calculator.CalculateLowIncomeTaxOffset(66666m));
-            Assert.AreEqual(0m, calculator.CalculateLowIncomeTaxOffset(70000m));
+            Assert.AreEqual(20542m, result.TaxableIncome);
+            Assert.AreEqual(444.98m, result.IncomeTax);
+            Assert.AreEqual(0m, result.MedicareLevy);
+            Assert.AreEqual(0m, result.RepairLevy);
+            Assert.AreEqual(445m, result.TaxOffset);
+            Assert.AreEqual(0m, result.TaxAfterOffset);
+            Assert.AreEqual(0m, result.TotalTaxPayable);
+            Assert.AreEqual(0m, result.AverageTaxRate);
         }
     }
 }

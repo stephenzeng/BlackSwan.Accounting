@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 
 namespace BlackSwan.Accounting.IndividualIncomeTax.Year2014To2015
 {
@@ -11,22 +12,30 @@ namespace BlackSwan.Accounting.IndividualIncomeTax.Year2014To2015
             _rates = new TaxRates();
         }
 
-        public decimal Calculate(decimal annualIncome)
+        public CalculateResult Calculate(decimal taxableIncome)
         {
-            var incomeTax = CalculateIncomeTax(annualIncome);
-            var medicareLevy = CalculateMedicareLevy(annualIncome);
-            var repairLevy = CalculateTemporaryBudgetRepairLevy(annualIncome);
-            var taxOffset = CalculateLowIncomeTaxOffset(annualIncome);
+            if (taxableIncome <= 0) throw new ArgumentException("Income must be larger than 0");
 
-            return incomeTax + medicareLevy + repairLevy - taxOffset;
+            var income = Math.Round(taxableIncome, 2, MidpointRounding.AwayFromZero);
+
+            var result = new CalculateResult
+                {
+                    TaxableIncome = income,
+                    IncomeTax = CalculateIncomeTax(income),
+                    MedicareLevy = CalculateMedicareLevy(income),
+                    RepairLevy = CalculateTemporaryBudgetRepairLevy(income),
+                    TaxOffset = CalculateLowIncomeTaxOffset(income)
+                };
+
+            return result;
         }
 
-        public decimal CalculateIncomeTax(decimal annaulIncome)
+        private decimal CalculateIncomeTax(decimal taxableIncome)
         {
             var tax = 0m;
-            var income = annaulIncome;
+            var income = taxableIncome;
 
-            foreach (var rate in _rates.IncomeTaxRates.Where(r => r.StartAmount <= annaulIncome).OrderByDescending(r => r.StartAmount))
+            foreach (var rate in _rates.IncomeTaxRates.Where(r => r.StartAmount <= taxableIncome).OrderByDescending(r => r.StartAmount))
             {
                 tax += (income - rate.StartAmount)*rate.Rate;
                 income = rate.StartAmount;
@@ -35,25 +44,34 @@ namespace BlackSwan.Accounting.IndividualIncomeTax.Year2014To2015
             return tax;
         }
 
-        public decimal CalculateMedicareLevy(decimal annaulIncome)
+        private decimal CalculateMedicareLevy(decimal taxableIncome)
         {
-            return annaulIncome*_rates.MedicareLevyRate;
+            var levy = 0m;
+            var income = taxableIncome;
+
+            foreach (var rate in _rates.MedicareLevyRates.Where(r => r.StartAmount <= taxableIncome).OrderByDescending(r => r.StartAmount))
+            {
+                levy += (income - rate.StartAmount) * rate.Rate;
+                income = rate.StartAmount;
+            }
+
+            return levy;
         }
 
-        public decimal CalculateTemporaryBudgetRepairLevy(decimal annaulIncome)
+        private decimal CalculateTemporaryBudgetRepairLevy(decimal taxableIncome)
         {
-            if (annaulIncome <= _rates.BudgetRepairLevyRate.StartAmount) return 0m;
+            if (taxableIncome <= _rates.BudgetRepairLevyRate.StartAmount) return 0m;
 
-            return (annaulIncome - _rates.BudgetRepairLevyRate.StartAmount)*_rates.BudgetRepairLevyRate.Rate;
+            return (taxableIncome - _rates.BudgetRepairLevyRate.StartAmount)*_rates.BudgetRepairLevyRate.Rate;
         }
 
-        public decimal CalculateLowIncomeTaxOffset(decimal annaulIncome)
+        private decimal CalculateLowIncomeTaxOffset(decimal taxableIncome)
         {
-            if (annaulIncome <= _rates.LowIncomeTaxOffsetRate.StartAmount)
+            if (taxableIncome <= _rates.LowIncomeTaxOffsetRate.StartAmount)
                 return _rates.LowIncomeTaxOffsetRate.FullTaxOffsetAmount;
 
             var offset = _rates.LowIncomeTaxOffsetRate.FullTaxOffsetAmount -
-                         (annaulIncome - _rates.LowIncomeTaxOffsetRate.StartAmount)*_rates.LowIncomeTaxOffsetRate.Rate;
+                         (taxableIncome - _rates.LowIncomeTaxOffsetRate.StartAmount)*_rates.LowIncomeTaxOffsetRate.Rate;
 
             return offset > 0m ? offset : 0m;
         }

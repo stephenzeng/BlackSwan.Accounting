@@ -16,7 +16,12 @@ namespace BlackSwan.Accounting.IndividualIncomeTax.Year2014To2015
                     new IncomeTaxRate {StartAmount = 180000m, Rate = 0.45m},
                 };
 
-            MedicareLevyRate = 0.02m;
+            MedicareLevyRates = new[]
+                {
+                    new MedicareLevyRate {StartAmount = 0m, Rate = 0m},
+                    new MedicareLevyRate {StartAmount = 20542m, Rate = 0.1m},
+                    new MedicareLevyRate {StartAmount = 24167m, Rate = 0.02m},
+                };
 
             BudgetRepairLevyRate = new TemporaryBudgetRepairLevyRate
                 {
@@ -33,7 +38,7 @@ namespace BlackSwan.Accounting.IndividualIncomeTax.Year2014To2015
         }
 
         public IEnumerable<IncomeTaxRate> IncomeTaxRates { get; set; }
-        public decimal MedicareLevyRate { get; set; }
+        public IEnumerable<MedicareLevyRate> MedicareLevyRates { get; set; }
         public TemporaryBudgetRepairLevyRate BudgetRepairLevyRate { get; set; }
         public LowIncomeTaxOffsetRate LowIncomeTaxOffsetRate { get; set; } 
     }
