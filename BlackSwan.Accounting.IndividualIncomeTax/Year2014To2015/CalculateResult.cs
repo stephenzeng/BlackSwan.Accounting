@@ -1,4 +1,5 @@
 ﻿using System;
+using BlackSwan.Accounting.IndividualIncomeTax.Common;
 
 namespace BlackSwan.Accounting.IndividualIncomeTax.Year2014To2015
 {
@@ -27,7 +28,7 @@ namespace BlackSwan.Accounting.IndividualIncomeTax.Year2014To2015
 
         public decimal AverageTaxRate
         {
-            get { return Math.Round(TotalTaxPayable/TaxableIncome, 4, MidpointRounding.AwayFromZero); }
+            get { return (TotalTaxPayable/TaxableIncome).RoundToRate(); }
         }
     }
 }

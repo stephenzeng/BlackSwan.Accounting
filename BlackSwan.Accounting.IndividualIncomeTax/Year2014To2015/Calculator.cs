@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using BlackSwan.Accounting.IndividualIncomeTax.Common;
 
 namespace BlackSwan.Accounting.IndividualIncomeTax.Year2014To2015
 {
@@ -16,7 +17,7 @@ namespace BlackSwan.Accounting.IndividualIncomeTax.Year2014To2015
         {
             if (taxableIncome <= 0) throw new ArgumentException("Income must be larger than 0");
 
-            var income = Math.Round(taxableIncome, 2, MidpointRounding.AwayFromZero);
+            var income = taxableIncome.RoundToCurrency();
 
             var result = new CalculateResult
                 {
@@ -41,7 +42,7 @@ namespace BlackSwan.Accounting.IndividualIncomeTax.Year2014To2015
                 income = rate.StartAmount;
             }
 
-            return tax;
+            return tax.RoundToCurrency();
         }
 
         private decimal CalculateMedicareLevy(decimal taxableIncome)
@@ -55,14 +56,16 @@ namespace BlackSwan.Accounting.IndividualIncomeTax.Year2014To2015
                 income = rate.StartAmount;
             }
 
-            return levy;
+            return levy.RoundToCurrency();
         }
 
         private decimal CalculateTemporaryBudgetRepairLevy(decimal taxableIncome)
         {
             if (taxableIncome <= _rates.BudgetRepairLevyRate.StartAmount) return 0m;
 
-            return (taxableIncome - _rates.BudgetRepairLevyRate.StartAmount)*_rates.BudgetRepairLevyRate.Rate;
+            var ley = (taxableIncome - _rates.BudgetRepairLevyRate.StartAmount)*_rates.BudgetRepairLevyRate.Rate;
+
+            return ley.RoundToCurrency();
         }
 
         private decimal CalculateLowIncomeTaxOffset(decimal taxableIncome)
@@ -73,7 +76,7 @@ namespace BlackSwan.Accounting.IndividualIncomeTax.Year2014To2015
             var offset = _rates.LowIncomeTaxOffsetRate.FullTaxOffsetAmount -
                          (taxableIncome - _rates.LowIncomeTaxOffsetRate.StartAmount)*_rates.LowIncomeTaxOffsetRate.Rate;
 
-            return offset > 0m ? offset : 0m;
+            return offset > 0m ? offset.RoundToCurrency() : 0m;
         }
     }
 }
