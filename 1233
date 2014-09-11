@@ -1,0 +1,22 @@
+[33md5a71a6389bccbc28c7c5777572c5149ae19305a[m Added logic to initialize the data in RavenDb
+[33m685068e57425809a21a040d2de87a6354f009f91[m Added a MVC project BlackSwan.Accounting.Web with RavenDb
+[33m98715bce182d03a47715520e8dccbb026b7a2182[m Refactory
+[33m17fb01fe3adf55ff00ae32a72b35cf30a455fefa[m Refactory
+[33mde50e3df29a89d9fcd1bd212a791b2f0050dd438[m Refactory
+[33mad1c4b63f95542876b1d9b43a65e659ce910ced4[m Added calculators for 2011 to 2012
+[33mf2eb9a635e49813787614c204fd4a121ddaba383[m Removed calculation for year 2013 to 2014
+[33mda490b3bf3d355848314a72a3bb8d0e391d9d37a[m Added a common class ThresholdRate
+[33m7a65b396521863b05f7dddd61fb204851ad37cb5[m Added tests for 2014 to 2015 calculation
+[33m0fe106bc26095b1c105890cc347882d68dd195fd[m Refactory code for year 2014 to 2015
+[33m2d7347f98cfc09814366cace5fbe12b761f07314[m Added tax calculate for year 2013 to 2014
+[33m274155e4d1d2a7acafb0c6b7b47c18d43d891dc5[m Remove directory
+[33maea6231223faf7eed6304eb8aaa57ff38d83c775[m Remove directory
+[33m1776556e75387e503bf0241346acdf111ab4fb0e[m Refactory project names
+[33md2555877690622cec39655e1fe7b7cd97232c278[m Refactory to a new namespace
+[33mcef4171eb58db35ed620ba669d14a6dc6680142d[m Added low icome tax offset calculation
+[33mda7147706ad7b392e817203c7dcd83e6d099e6b7[m Create README.md
+[33m8c02a97abb689854e8796aa06ca9de084fd1596a[m Refactory
+[33m9766eb146df0541a7d2070e6a918d552ec3cf8bb[m Added temporary budget repair levy calculate
+[33m426147d170596a1ad6ccbd354cadcc4b9ab9391c[m Added medicare levy calculation
+[33ma749d0c97f9ac6784f942e8fcd7b8220d95efaaf[m Created project files
+[33mf1d171e52cc9e95b56cfbe6636886128872b72fa[m Initial commit to add default .gitIgnore and .gitAttribute files.

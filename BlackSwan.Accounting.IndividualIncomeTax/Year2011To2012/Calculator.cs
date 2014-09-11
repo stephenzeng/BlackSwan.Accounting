@@ -1,15 +1,15 @@
 ﻿using System;
 using BlackSwan.Accounting.IndividualIncomeTax.Common;
 
-namespace BlackSwan.Accounting.IndividualIncomeTax.Year2014To2015
+namespace BlackSwan.Accounting.IndividualIncomeTax.Year2011To2012
 {
     public class Calculator
     {
-        private readonly TaxRatesYear2014To2015 _rates;
+        private readonly TaxRatesYear2011To2012 _rates;
 
         public Calculator()
         {
-            _rates = new TaxRatesYear2014To2015();
+            _rates = new TaxRatesYear2011To2012();
         }
 
         public CalculateResult Calculate(decimal taxableIncome)
@@ -23,7 +23,7 @@ namespace BlackSwan.Accounting.IndividualIncomeTax.Year2014To2015
                     TaxableIncome = income,
                     IncomeTax = CalculateIncomeTax(income),
                     MedicareLevy = CalculateMedicareLevy(income),
-                    RepairLevy = CalculateTemporaryBudgetRepairLevy(income),
+                    FloodLevy = CalculateFloodLevy(income),
                     TaxOffset = CalculateLowIncomeTaxOffset(income)
                 };
 
@@ -40,9 +40,9 @@ namespace BlackSwan.Accounting.IndividualIncomeTax.Year2014To2015
             return taxableIncome.ThresholdRateCalculate(_rates.MedicareLevyRates).RoundToCurrency();
         }
 
-        private decimal CalculateTemporaryBudgetRepairLevy(decimal taxableIncome)
+        private decimal CalculateFloodLevy(decimal taxableIncome)
         {
-            return taxableIncome.ThresholdRateCalculate(_rates.BudgetRepairLevyRates).RoundToCurrency();
+            return taxableIncome.ThresholdRateCalculate(_rates.FloodLevyRates).RoundToCurrency();
         }
 
         private decimal CalculateLowIncomeTaxOffset(decimal taxableIncome)
