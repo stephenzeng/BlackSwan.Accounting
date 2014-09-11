@@ -45,9 +45,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\ThresholdRate.cs" />
-    <Compile Include="Year2013To2014\Calculator.cs" />
-    <Compile Include="Year2013To2014\LowIncomeTaxOffsetRate.cs" />
-    <Compile Include="Year2013To2014\TaxRates.cs" />
     <Compile Include="Year2014To2015\CalculateResult.cs" />
     <Compile Include="Year2014To2015\LowIncomeTaxOffsetRate.cs" />
     <Compile Include="Year2014To2015\TemporaryBudgetRepairLevyRate.cs" />
