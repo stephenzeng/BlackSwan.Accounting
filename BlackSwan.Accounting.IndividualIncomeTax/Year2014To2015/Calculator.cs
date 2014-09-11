@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using BlackSwan.Accounting.IndividualIncomeTax.Common;
 
 namespace BlackSwan.Accounting.IndividualIncomeTax.Year2014To2015
@@ -33,39 +32,17 @@ namespace BlackSwan.Accounting.IndividualIncomeTax.Year2014To2015
 
         private decimal CalculateIncomeTax(decimal taxableIncome)
         {
-            var tax = 0m;
-            var income = taxableIncome;
-
-            foreach (var rate in _rates.IncomeTaxRates.Where(r => r.StartAmount <= taxableIncome).OrderByDescending(r => r.StartAmount))
-            {
-                tax += (income - rate.StartAmount)*rate.Rate;
-                income = rate.StartAmount;
-            }
-
-            return tax.RoundToCurrency();
+            return taxableIncome.ThresholdRateCalculate(_rates.IncomeTaxRates).RoundToCurrency();
         }
 
         private decimal CalculateMedicareLevy(decimal taxableIncome)
         {
-            var levy = 0m;
-            var income = taxableIncome;
-
-            foreach (var rate in _rates.MedicareLevyRates.Where(r => r.StartAmount <= taxableIncome).OrderByDescending(r => r.StartAmount))
-            {
-                levy += (income - rate.StartAmount) * rate.Rate;
-                income = rate.StartAmount;
-            }
-
-            return levy.RoundToCurrency();
+            return taxableIncome.ThresholdRateCalculate(_rates.MedicareLevyRates).RoundToCurrency();
         }
 
         private decimal CalculateTemporaryBudgetRepairLevy(decimal taxableIncome)
         {
-            if (taxableIncome <= _rates.BudgetRepairLevyRate.StartAmount) return 0m;
-
-            var ley = (taxableIncome - _rates.BudgetRepairLevyRate.StartAmount)*_rates.BudgetRepairLevyRate.Rate;
-
-            return ley.RoundToCurrency();
+            return taxableIncome.ThresholdRateCalculate(_rates.BudgetRepairLevyRates).RoundToCurrency();
         }
 
         private decimal CalculateLowIncomeTaxOffset(decimal taxableIncome)
