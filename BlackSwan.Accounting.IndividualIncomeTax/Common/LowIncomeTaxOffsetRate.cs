@@ -1,4 +1,4 @@
-﻿namespace BlackSwan.Accounting.IndividualIncomeTax.Year2014To2015
+﻿namespace BlackSwan.Accounting.IndividualIncomeTax.Common
 {
     public class LowIncomeTaxOffsetRate
     {
