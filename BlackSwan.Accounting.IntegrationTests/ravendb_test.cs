@@ -1,5 +1,7 @@
 ﻿using System.Linq;
+using BlackSwan.Accounting.Common.Indexes;
 using BlackSwan.Accounting.IndividualIncomeTax.Common;
+using BlackSwan.Accounting.IntegrationTests.Common;
 using Year2014 = BlackSwan.Accounting.IndividualIncomeTax.Year2014To2015;
 using Year2011 = BlackSwan.Accounting.IndividualIncomeTax.Year2011To2012;
 using NUnit.Framework;

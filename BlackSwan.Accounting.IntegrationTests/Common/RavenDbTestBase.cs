@@ -1,8 +1,10 @@
 using System;
+using BlackSwan.Accounting.Common;
+using BlackSwan.Accounting.Common.Indexes;
 using Raven.Client.Embedded;
 using Raven.Client.Indexes;
 
-namespace BlackSwan.Accounting.IntegrationTests
+namespace BlackSwan.Accounting.IntegrationTests.Common
 {
     public abstract class RavenDbTestBase : IDisposable
     {

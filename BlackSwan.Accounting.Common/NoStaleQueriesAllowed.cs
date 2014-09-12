@@ -1,7 +1,7 @@
 using Raven.Client;
 using Raven.Client.Listeners;
 
-namespace BlackSwan.Accounting.IntegrationTests
+namespace BlackSwan.Accounting.Common
 {
     public class NoStaleQueriesAllowed : IDocumentQueryListener
     {

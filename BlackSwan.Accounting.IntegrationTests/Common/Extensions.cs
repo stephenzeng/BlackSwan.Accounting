@@ -1,8 +1,8 @@
-﻿using System.Linq;
+using System.Linq;
 using Raven.Client;
 using Raven.Client.Document;
 
-namespace BlackSwan.Accounting.IntegrationTests
+namespace BlackSwan.Accounting.IntegrationTests.Common
 {
     public static class Extensions
     {
