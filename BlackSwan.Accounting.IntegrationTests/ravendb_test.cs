@@ -16,7 +16,7 @@ namespace BlackSwan.Accounting.IntegrationTests
 
         public ravendb_test()
         {
-            DeleteTestDatabase();
+            Extensions.DeleteDatabase(TestDatabaseName);
             _testStore = new DocumentStore()
             {
                 ConnectionStringName = "TestDB"
@@ -127,6 +127,7 @@ namespace BlackSwan.Accounting.IntegrationTests
 
         private void query_tax_rates()
         {
+            // assert
             using (var session = _testStore.OpenSession())
             {
                 Assert.AreNotEqual(0, session.Query<Year2011.TaxRates>().Count());
@@ -136,35 +137,12 @@ namespace BlackSwan.Accounting.IntegrationTests
 
         private void query_tax_rates_with_index()
         {
+            // assert
             using (var session = _testStore.OpenSession())
             {
                 var list = session.Query<TaxRatesBase, TaxRatesCountIndex>();
                 Assert.AreNotEqual(0, list.Count());
             }
-        }
-
-        private static void DeleteTestDatabase()
-        {
-            var store = new DocumentStore()
-            {
-                ConnectionStringName = "SystemDB"
-            }.Initialize();
-
-            if (store.HasDatabase(TestDatabaseName))
-            {
-                var relativeUrl = string.Format("/admin/databases/{0}", TestDatabaseName);
-                var httpJsonRequest = store.AsyncDatabaseCommands.CreateRequest(relativeUrl, "DELETE");
-                httpJsonRequest.ExecuteRequest();
-            }
-        }
-    }
-
-    public class TaxRatesCountIndex : AbstractMultiMapIndexCreationTask
-    {
-        public TaxRatesCountIndex()
-        {
-            AddMap<Year2014.TaxRates>(rates => rates.Select(r => new {r.Id}));
-            AddMap<Year2011.TaxRates>(rates => rates.Select(r => new {r.Id}));
         }
     }
 }
