@@ -3,7 +3,7 @@ using Raven.Client;
 
 namespace BlackSwan.Accounting.Web.Controllers
 {
-    public abstract class RavenController : Controller
+    public abstract class RavenDbController : Controller
     {
         public static IDocumentStore DocumentStore { get; set; }
 
