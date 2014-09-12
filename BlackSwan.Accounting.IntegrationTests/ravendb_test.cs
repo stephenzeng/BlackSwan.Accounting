@@ -1,30 +1,13 @@
 ﻿using System.Linq;
 using BlackSwan.Accounting.IndividualIncomeTax.Common;
-using Raven.Client.Indexes;
 using Year2014 = BlackSwan.Accounting.IndividualIncomeTax.Year2014To2015;
 using Year2011 = BlackSwan.Accounting.IndividualIncomeTax.Year2011To2012;
 using NUnit.Framework;
-using Raven.Client;
-using Raven.Client.Document;
 
 namespace BlackSwan.Accounting.IntegrationTests
 {
-    public class ravendb_test
+    public class ravendb_test : RavenDbTestBase
     {
-        private const string TestDatabaseName = "BlackSwan.Accounting.IntegrationTestsDB";
-        private readonly IDocumentStore _testStore;
-
-        public ravendb_test()
-        {
-            Extensions.DeleteDatabase(TestDatabaseName);
-            _testStore = new DocumentStore()
-            {
-                ConnectionStringName = "TestDB"
-            }.Initialize();
-
-            IndexCreation.CreateIndexes(typeof (TaxRatesCountIndex).Assembly, _testStore);
-        }
-
         [Test]
         public void execute_tests()
         {
@@ -36,7 +19,7 @@ namespace BlackSwan.Accounting.IntegrationTests
 
         private void insert_tax_rates_2011()
         {
-            using (var session = _testStore.OpenSession())
+            using (var session = DocumentStore.OpenSession())
             {
                 var taxRates = new Year2011.TaxRates()
                 {
@@ -74,7 +57,7 @@ namespace BlackSwan.Accounting.IntegrationTests
             }
 
             // assert
-            using (var session = _testStore.OpenSession())
+            using (var session = DocumentStore.OpenSession())
             {
                 Assert.IsNotNull(session.Load<Year2011.TaxRates>("TaxRates/2011"));
             }
@@ -82,7 +65,7 @@ namespace BlackSwan.Accounting.IntegrationTests
 
         private void insert_tax_rates_2014()
         {
-            using (var session = _testStore.OpenSession())
+            using (var session = DocumentStore.OpenSession())
             {
                 var taxRates = new Year2014.TaxRates()
                 {
@@ -117,9 +100,9 @@ namespace BlackSwan.Accounting.IntegrationTests
                 session.Store(taxRates);
                 session.SaveChanges();
             }
-            
+
             // assert
-            using (var session = _testStore.OpenSession())
+            using (var session = DocumentStore.OpenSession())
             {
                 Assert.IsNotNull(session.Load<Year2014.TaxRates>("TaxRates/2014"));
             }
@@ -128,7 +111,7 @@ namespace BlackSwan.Accounting.IntegrationTests
         private void query_tax_rates()
         {
             // assert
-            using (var session = _testStore.OpenSession())
+            using (var session = DocumentStore.OpenSession())
             {
                 Assert.AreNotEqual(0, session.Query<Year2011.TaxRates>().Count());
                 Assert.AreNotEqual(0, session.Query<Year2014.TaxRates>().Count());
@@ -138,7 +121,7 @@ namespace BlackSwan.Accounting.IntegrationTests
         private void query_tax_rates_with_index()
         {
             // assert
-            using (var session = _testStore.OpenSession())
+            using (var session = DocumentStore.OpenSession())
             {
                 var list = session.Query<TaxRatesBase, TaxRatesCountIndex>();
                 Assert.AreNotEqual(0, list.Count());
