@@ -5,11 +5,11 @@ namespace BlackSwan.Accounting.IndividualIncomeTax.Year2011To2012
 {
     public class Calculator
     {
-        private readonly TaxRatesYear2011To2012 _rates;
+        private readonly TaxRates _rates;
 
         public Calculator()
         {
-            _rates = new TaxRatesYear2011To2012();
+            _rates = new TaxRates();
         }
 
         public CalculateResult Calculate(decimal taxableIncome)

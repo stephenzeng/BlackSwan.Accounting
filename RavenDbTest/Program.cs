@@ -4,6 +4,7 @@ using BlackSwan.Accounting.IndividualIncomeTax.Common;
 using BlackSwan.Accounting.IndividualIncomeTax.Year2011To2012;
 using BlackSwan.Accounting.IndividualIncomeTax.Year2014To2015;
 using Raven.Client.Document;
+using TaxRates = BlackSwan.Accounting.IndividualIncomeTax.Year2014To2015.TaxRates;
 
 namespace RavenDbTest
 {
@@ -27,8 +28,8 @@ namespace RavenDbTest
 
             using (var session = documentStore.OpenSession())
             {
-                var taxRates2011To2012 = session.Query<TaxRatesYear2011To2012>().First();
-                var taxRates2014To2015 = session.Query<TaxRatesYear2014To2015>().First();
+                var taxRates2011To2012 = session.Query<BlackSwan.Accounting.IndividualIncomeTax.Year2011To2012.TaxRates>().First();
+                var taxRates2014To2015 = session.Query<TaxRates>().First();
 
                 Console.WriteLine(taxRates2011To2012.LowIncomeTaxOffsetRate.FullTaxOffsetAmount);
                 Console.WriteLine(taxRates2014To2015.LowIncomeTaxOffsetRate.FullTaxOffsetAmount);
@@ -46,7 +47,7 @@ namespace RavenDbTest
 
             using (var session = documentStore.OpenSession())
             {
-                var taxRates2011To2012 = new TaxRatesYear2011To2012
+                var taxRates2011To2012 = new BlackSwan.Accounting.IndividualIncomeTax.Year2011To2012.TaxRates
                     {
                         IncomeTaxRates = new[]
                             {
@@ -76,7 +77,7 @@ namespace RavenDbTest
                             },
                     };
 
-                var taxRates2014To2015 = new TaxRatesYear2014To2015
+                var taxRates2014To2015 = new TaxRates
                     {
                         IncomeTaxRates = new[]
                             {

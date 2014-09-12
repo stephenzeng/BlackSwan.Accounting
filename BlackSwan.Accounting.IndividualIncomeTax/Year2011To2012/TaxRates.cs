@@ -3,9 +3,9 @@ using BlackSwan.Accounting.IndividualIncomeTax.Common;
 
 namespace BlackSwan.Accounting.IndividualIncomeTax.Year2011To2012
 {
-    public class TaxRatesYear2011To2012
+    public class TaxRates : TaxRatesBase
     {
-        public TaxRatesYear2011To2012()
+        public TaxRates()
         {
             IncomeTaxRates = new[]
             {
@@ -38,7 +38,6 @@ namespace BlackSwan.Accounting.IndividualIncomeTax.Year2011To2012
             };
         }
 
-        public IEnumerable<ThresholdRate> IncomeTaxRates { get; set; }
         public IEnumerable<ThresholdRate> MedicareLevyRates { get; set; }
         public IEnumerable<ThresholdRate> FloodLevyRates { get; set; }
         public LowIncomeTaxOffsetRate LowIncomeTaxOffsetRate { get; set; }
