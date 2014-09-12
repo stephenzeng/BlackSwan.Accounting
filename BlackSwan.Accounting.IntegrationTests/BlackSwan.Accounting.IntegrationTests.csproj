@@ -56,6 +56,7 @@
     <Compile Include="Extensions.cs" />
     <Compile Include="ravendb_test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TaxRatesCountIndex.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
