@@ -138,7 +138,7 @@ namespace BlackSwan.Accounting.IntegrationTests
         {
             using (var session = _testStore.OpenSession())
             {
-                var list = session.Query<TaxRatesBase, TaxRatesCountIndex>().ToList();
+                var list = session.Query<TaxRatesBase, TaxRatesCountIndex>();
                 Assert.AreNotEqual(0, list.Count());
             }
         }
