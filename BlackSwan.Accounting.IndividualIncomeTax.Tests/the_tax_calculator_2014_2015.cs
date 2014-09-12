@@ -6,11 +6,13 @@ namespace BlackSwan.Accounting.IndividualIncomeTax.Tests
 {
     public class the_tax_calculator_2014_2015
     {
+        private readonly TaxRates _taxRates = TaxRatesConfiguration.TaxRates2014;
+
         [Test]
         public void throw_exception_if_not_larger_than_0()
         {
             // arrange
-            var calculator = new Calculator();
+            var calculator = new Calculator(_taxRates);
 
             // assert
             Assert.Catch<ArgumentException>(() => calculator.Calculate(-0.1m));
@@ -21,7 +23,7 @@ namespace BlackSwan.Accounting.IndividualIncomeTax.Tests
         public void calculate_tax_18000()
         {
             // arrange
-            var calculator = new Calculator();
+            var calculator = new Calculator(_taxRates);
 
             // act
             var result = calculator.Calculate(18000.006m);
@@ -42,7 +44,7 @@ namespace BlackSwan.Accounting.IndividualIncomeTax.Tests
         public void calculate_tax_20542()
         {
             // arrange
-            var calculator = new Calculator();
+            var calculator = new Calculator(_taxRates);
 
             // act
             var result = calculator.Calculate(20542.004m);
@@ -62,7 +64,7 @@ namespace BlackSwan.Accounting.IndividualIncomeTax.Tests
         public void calculate_tax_50000()
         {
             // arrange
-            var calculator = new Calculator();
+            var calculator = new Calculator(_taxRates);
 
             // act
             var result = calculator.Calculate(50000m);
@@ -82,7 +84,7 @@ namespace BlackSwan.Accounting.IndividualIncomeTax.Tests
         public void calculate_tax_200000()
         {
             // arrange
-            var calculator = new Calculator();
+            var calculator = new Calculator(_taxRates);
 
             // act
             var result = calculator.Calculate(200000m);

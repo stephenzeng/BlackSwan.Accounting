@@ -1,9 +1,13 @@
-﻿using System.Web;
+﻿using System.Linq;
+using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
+using BlackSwan.Accounting.IndividualIncomeTax;
+using BlackSwan.Accounting.IndividualIncomeTax.Common;
 using BlackSwan.Accounting.Web.Controllers;
 using BlackSwan.Accounting.Web.Indexes;
+using Raven.Abstractions.Extensions;
 using Raven.Client;
 using Raven.Client.Document;
 using Raven.Client.Indexes;
@@ -43,6 +47,7 @@ namespace BlackSwan.Accounting.Web
             InitializeDocumentStore();
             RavenDbController.DocumentStore = DocumentStore;
             CreateDocumentIndexes();
+            SetupDocumentStore();
         }
 
         public static IDocumentStore DocumentStore { get; private set; }
@@ -60,6 +65,16 @@ namespace BlackSwan.Accounting.Web
         private static void CreateDocumentIndexes()
         {
             IndexCreation.CreateIndexesAsync(typeof(TaxRatesCountIndex).Assembly, DocumentStore);
+        }
+
+        private static void SetupDocumentStore()
+        {
+            using (var session = DocumentStore.OpenSession())
+            {
+                if (session.Query<TaxRatesBase, TaxRatesCountIndex>().Any()) return;
+                TaxRatesConfiguration.TaxRates.ForEach(session.Store);
+                session.SaveChanges();
+            }
         }
     }
 }

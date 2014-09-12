@@ -5,11 +5,11 @@ namespace BlackSwan.Accounting.IndividualIncomeTax.Year2014To2015
 {
     public class Calculator
     {
-        private readonly TaxRates _rates;
+        private readonly TaxRates _taxRates;
 
-        public Calculator()
+        public Calculator(TaxRates taxRates)
         {
-            _rates = new TaxRates();
+            _taxRates = taxRates;
         }
 
         public CalculateResult Calculate(decimal taxableIncome)
@@ -32,26 +32,26 @@ namespace BlackSwan.Accounting.IndividualIncomeTax.Year2014To2015
 
         private decimal CalculateIncomeTax(decimal taxableIncome)
         {
-            return taxableIncome.ThresholdRateCalculate(_rates.IncomeTaxRates).RoundToCurrency();
+            return taxableIncome.ThresholdRateCalculate(_taxRates.IncomeTaxRates).RoundToCurrency();
         }
 
         private decimal CalculateMedicareLevy(decimal taxableIncome)
         {
-            return taxableIncome.ThresholdRateCalculate(_rates.MedicareLevyRates).RoundToCurrency();
+            return taxableIncome.ThresholdRateCalculate(_taxRates.MedicareLevyRates).RoundToCurrency();
         }
 
         private decimal CalculateTemporaryBudgetRepairLevy(decimal taxableIncome)
         {
-            return taxableIncome.ThresholdRateCalculate(_rates.BudgetRepairLevyRates).RoundToCurrency();
+            return taxableIncome.ThresholdRateCalculate(_taxRates.BudgetRepairLevyRates).RoundToCurrency();
         }
 
         private decimal CalculateLowIncomeTaxOffset(decimal taxableIncome)
         {
-            if (taxableIncome <= _rates.LowIncomeTaxOffsetRate.StartAmount)
-                return _rates.LowIncomeTaxOffsetRate.FullTaxOffsetAmount;
+            if (taxableIncome <= _taxRates.LowIncomeTaxOffsetRate.StartAmount)
+                return _taxRates.LowIncomeTaxOffsetRate.FullTaxOffsetAmount;
 
-            var offset = _rates.LowIncomeTaxOffsetRate.FullTaxOffsetAmount -
-                         (taxableIncome - _rates.LowIncomeTaxOffsetRate.StartAmount)*_rates.LowIncomeTaxOffsetRate.Rate;
+            var offset = _taxRates.LowIncomeTaxOffsetRate.FullTaxOffsetAmount -
+                         (taxableIncome - _taxRates.LowIncomeTaxOffsetRate.StartAmount)*_taxRates.LowIncomeTaxOffsetRate.Rate;
 
             return offset > 0m ? offset.RoundToCurrency() : 0m;
         }

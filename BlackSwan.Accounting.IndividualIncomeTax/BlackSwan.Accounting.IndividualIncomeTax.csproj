@@ -57,6 +57,7 @@
     <Compile Include="Common\LowIncomeTaxOffsetRate.cs" />
     <Compile Include="Common\TaxRatesBase.cs" />
     <Compile Include="Common\ThresholdRate.cs" />
+    <Compile Include="TaxRatesConfiguration.cs" />
     <Compile Include="Year2011To2012\CalculateResult.cs" />
     <Compile Include="Year2011To2012\Calculator.cs" />
     <Compile Include="Year2011To2012\TaxRates.cs" />
