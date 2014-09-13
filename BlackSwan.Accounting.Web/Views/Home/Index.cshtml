@@ -1,46 +1,17 @@
 ﻿@{
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1 style="font-family: Tahoma;">
-        <span class="glyphicon glyphicon-leaf"></span>
+<div class="jumbotron text-center invert-color">
+    <span class="glyphicon glyphicon-leaf" style="font-size: 500%;"></span>
+    <h1 style="font-family: Tahoma; color: black;">
         Black Swan Accounting
     </h1>
-    <p class="lead">
-        Black Swan Accounting is an Perth, Australia based accounting company. As a startup company 
-        it focuses on providing high quality services of the personal income tax return and coorperate 
-        accounting. Our elite team are dedicated to provide an excellent service to our valued customers
-        with the highest standard.
+    <p class="text-center" style="width: 90%; font-size: 30px; margin: auto;">
+        A comprehensive personal income tax online calculator that helps you to understand the complicated tax calculations
     </p>
 </div>
-
-<div class="row">
-    <div class="col-md-4">
-        <h2>Personal Tax Return</h2>
-        <p>
-            If you are looking for a tax accountant in Perth or a tax agent in the metropolitan area, 
-            we will be the best accountant to choose. The tax accountants can do mobile tax returns in Perth 
-            and surrounding suburbs. 
-        </p>
-        <p><a class="btn btn-default" href="">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Corporate Accounting</h2>
-        <p>
-            We prepare & lodge business activity statements quartely, monthly or annualy depending on the requirement. 
-            Some tax payers do their own BAS but it is better to get an accountant’s advice because there can be many 
-            rules that affects specific industries.
-        </p>
-        <p>Coming soon...</p>
-    </div>
-    <div class="col-md-4">
-        <h2>Corporate Auditing</h2>
-        <p>
-            Thinking of setting up a Self manged super fund? or looking for a better accountant to do the compliance? 
-            You will not go wrong with Taxgate Accountants! The experiene we have in the area of self managed superfunds 
-            will let you retire in peace.
-        </p>
-        <p>Coming soon...</p>
-    </div>
+<div class="row text-center" style="margin-bottom: 160px;">
+    <a href="@Url.Action("index", "TaxCalculator")" class="btn btn-success btn-lg" style="width: 180px; padding: 10px;">Start Now</a>
 </div>

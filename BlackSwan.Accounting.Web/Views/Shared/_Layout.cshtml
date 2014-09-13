@@ -3,7 +3,8 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - Black Swan Accounting</title>
+    <link rel="icon" type="image/png" href="@Url.Content("~/Content/favicon.png")"/>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -22,6 +23,7 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Tax Calculator", "Index", "TaxCalculator")</li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li>@Html.ActionLink("About", "About", "Home")</li>
@@ -30,13 +32,10 @@
             </div>
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Black Swan Accounting</p>
-        </footer>
-    </div>
+    @RenderBody()
+    <footer style="background-color: #d2b48c; padding: 10px; text-align: center;">
+        <span style="color: #000;">&copy; @DateTime.Now.Year - Black Swan Accounting - zeng.stephen@gmail.com</span>
+    </footer>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

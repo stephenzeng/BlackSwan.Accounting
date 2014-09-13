@@ -22,3 +22,9 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.invert-color {
+    -webkit-filter: invert(100%);
+    -moz-filter: invert(100%);
+    filter: invert(100%);
+}
