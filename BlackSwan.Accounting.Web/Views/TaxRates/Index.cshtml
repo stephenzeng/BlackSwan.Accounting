@@ -1,0 +1,14 @@
+﻿@model IEnumerable<BlackSwan.Accounting.IndividualIncomeTax.Common.TaxRatesBase>
+
+@{
+    ViewBag.Title = "Tax Rates";
+    Layout = "~/Views/Shared/_LayoutContent.cshtml";
+}
+
+<h1 class="page-header">@ViewBag.Title</h1>
+<h3>@ViewBag.Message</h3>
+
+@foreach (var taxRates in Model)
+{
+    @Html.Partial(taxRates.Name, taxRates)
+}
