@@ -20,7 +20,10 @@ namespace BlackSwan.Accounting.IndividualIncomeTax
             {
                 return new Year2011To2012.TaxRates()
                 {
-                    Id = "TaxRates/2011",
+                    Id = 2011,
+                    Year = 2011,
+                    Name = "TaxRatesYear2011",
+                    Description = "Finacial year 2011 - 2012",
                     IncomeTaxRates = new[]
                     {
                         new ThresholdRate {StartAmount = 0m, Rate = 0m},
@@ -57,7 +60,10 @@ namespace BlackSwan.Accounting.IndividualIncomeTax
             {
                 return new Year2014To2015.TaxRates()
                 {
-                    Id = "TaxRates/2014",
+                    Id = 2014,
+                    Year = 2014,
+                    Name = "TaxRatesYear2014",
+                    Description = "Finacial year 2014 - 2015",
                     IncomeTaxRates = new[]
                     {
                         new ThresholdRate {StartAmount = 0m, Rate = 0m},

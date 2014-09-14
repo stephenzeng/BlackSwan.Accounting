@@ -169,6 +169,7 @@
     <Compile Include="Controllers\ControllerBase.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TaxCalculatorController.cs" />
+    <Compile Include="Controllers\TaxRatesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -217,6 +218,11 @@
     <Content Include="Views\Shared\_LayoutHome.cshtml" />
     <Content Include="Views\Shared\_LayoutContent.cshtml" />
     <Content Include="Views\TaxCalculator\Index.cshtml" />
+    <Content Include="Views\TaxRates\Index.cshtml" />
+    <Content Include="Views\TaxRates\Test.cshtml" />
+    <Content Include="Views\TaxRates\Details.cshtml" />
+    <Content Include="Views\TaxRates\TaxRatesYear2011.cshtml" />
+    <Content Include="Views\TaxRates\TaxRatesYear2014.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

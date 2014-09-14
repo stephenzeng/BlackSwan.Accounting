@@ -63,14 +63,14 @@ namespace BlackSwan.Accounting.Web
 
         private static void CreateIndexes()
         {
-            IndexCreation.CreateIndexes(typeof (TaxRatesCountIndex).Assembly, DocumentStore);
+            IndexCreation.CreateIndexes(typeof (TaxRatesBaseIndex).Assembly, DocumentStore);
         }
 
         private static void InitializeDocumentStoreData()
         {
             using (var session = DocumentStore.OpenSession())
             {
-                if (session.Query<TaxRatesBase, TaxRatesCountIndex>().Any()) return;
+                if (session.Query<TaxRatesBase, TaxRatesBaseIndex>().Any()) return;
                 TaxRatesConfiguration.TaxRates.ForEach(session.Store);
                 session.SaveChanges();
             }

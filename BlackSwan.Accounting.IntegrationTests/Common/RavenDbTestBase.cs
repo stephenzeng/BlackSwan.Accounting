@@ -13,7 +13,7 @@ namespace BlackSwan.Accounting.IntegrationTests.Common
             DocumentStore = new EmbeddableDocumentStore {RunInMemory = true};
             DocumentStore.Initialize();
 
-            IndexCreation.CreateIndexes(typeof(TaxRatesCountIndex).Assembly, DocumentStore);
+            IndexCreation.CreateIndexes(typeof(TaxRatesBaseIndex).Assembly, DocumentStore);
 
             DocumentStore.RegisterListener(new NoStaleQueriesAllowed());
         }

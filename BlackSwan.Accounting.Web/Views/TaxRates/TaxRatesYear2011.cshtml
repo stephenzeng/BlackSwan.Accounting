@@ -1,0 +1,27 @@
+﻿@using System.Reflection.Emit
+@model BlackSwan.Accounting.IndividualIncomeTax.Year2011To2012.TaxRates
+
+@{
+    Layout = null;
+}
+
+<p class="lead">@Model.Description</p>
+<div class="row">
+    <div class="col-md-4">
+        StartAmount
+    </div>
+    <div class="col-md-4">
+        Rate
+    </div>
+</div>
+@foreach (var rate in Model.IncomeTaxRates)
+{
+    <div class="row">
+        <div class="col-md-4">
+            @rate.StartAmount
+        </div>
+        <div class="col-md-4">
+            @rate.Rate
+        </div>
+    </div>
+}
