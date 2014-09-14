@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace BlackSwan.Accounting.IndividualIncomeTax.Common
 {
@@ -8,6 +9,7 @@ namespace BlackSwan.Accounting.IndividualIncomeTax.Common
         public int Year { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+        [DisplayName("Taxable income tax rates")]
         public IEnumerable<ThresholdRate> IncomeTaxRates { get; set; }
     }
 }

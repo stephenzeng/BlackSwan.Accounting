@@ -1,27 +1,152 @@
-﻿@using System.Reflection.Emit
-@model BlackSwan.Accounting.IndividualIncomeTax.Year2011To2012.TaxRates
+﻿@model BlackSwan.Accounting.IndividualIncomeTax.Year2011To2012.TaxRates
 
 @{
     Layout = null;
 }
 
-<p class="lead">@Model.Description</p>
+<h3><span class="label label-primary">@Model.Description</span></h3>
+
 <div class="row">
-    <div class="col-md-4">
-        StartAmount
-    </div>
-    <div class="col-md-4">
-        Rate
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                @Html.DisplayNameFor(m => m.IncomeTaxRates)
+            </div>
+
+            <table class="table table-striped">
+                <tr>
+                    <th>Rage</th>
+                    <th>Rate</th>
+                </tr>
+                @{
+                    var incomeRates = Model.IncomeTaxRates.ToArray();
+
+                    for (var i = 0; i < incomeRates.Length; i++)
+                    {
+                        <tr>
+                            @if (i != incomeRates.Length - 1)
+                            {
+                                <td>@string.Format("{0:C0}", incomeRates[i].StartAmount) ~ @string.Format("{0:C0}", incomeRates[i + 1].StartAmount)</td>
+                            }
+                            else
+                            {
+                                <td>Over @string.Format("{0:C0}", incomeRates[i].StartAmount)</td>
+                            }
+
+                            <td>@string.Format("{0:P}", incomeRates[i].Rate)</td>
+                        </tr>
+                    }
+                }
+
+            </table>
+        </div>
     </div>
 </div>
-@foreach (var rate in Model.IncomeTaxRates)
-{
-    <div class="row">
-        <div class="col-md-4">
-            @rate.StartAmount
-        </div>
-        <div class="col-md-4">
-            @rate.Rate
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                @Html.DisplayNameFor(m => m.MedicareLevyRates)
+            </div>
+
+            <table class="table table-striped">
+                <tr>
+                    <th>Rage</th>
+                    <th>Rate</th>
+                </tr>
+                @{
+                    var medicalLevyRates = Model.MedicareLevyRates.ToArray();
+
+                    for (var i = 0; i < medicalLevyRates.Length; i++)
+                    {
+                        <tr>
+                            @if (i != medicalLevyRates.Length - 1)
+                            {
+                                <td>@string.Format("{0:C0}", medicalLevyRates[i].StartAmount) ~ @string.Format("{0:C0}", medicalLevyRates[i + 1].StartAmount)</td>
+                            }
+                            else
+                            {
+                                <td>Over @string.Format("{0:C0}", medicalLevyRates[i].StartAmount)</td>
+                            }
+
+                            <td>@string.Format("{0:P}", medicalLevyRates[i].Rate)</td>
+                        </tr>
+                    }
+                }
+
+            </table>
         </div>
     </div>
-}
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                @Html.DisplayNameFor(m => m.FloodLevyRates)
+            </div>
+
+            <table class="table table-striped">
+                <tr>
+                    <th>Rage</th>
+                    <th>Rate</th>
+                </tr>
+                @{
+                    var floodLevyRates = Model.FloodLevyRates.ToArray();
+
+                    for (var i = 0; i < floodLevyRates.Length; i++)
+                    {
+                        <tr>
+                            @if (i != floodLevyRates.Length - 1)
+                            {
+                                <td>@string.Format("{0:C0}", floodLevyRates[i].StartAmount) ~ @string.Format("{0:C0}", floodLevyRates[i + 1].StartAmount)</td>
+                            }
+                            else
+                            {
+                                <td>Over @string.Format("{0:C0}", floodLevyRates[i].StartAmount)</td>
+                            }
+
+                            <td>@string.Format("{0:P}", floodLevyRates[i].Rate)</td>
+                        </tr>
+                    }
+                }
+
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                @Html.DisplayNameFor(m => m.LowIncomeTaxOffsetRate)
+            </div>
+
+            <table class="table table-striped">
+                <tr>
+                    <th>Income Range</th>
+                    <th>Offset</th>
+                </tr>
+                <tr>
+                    @{
+                        var startAmount = string.Format("{0:c0}", Model.LowIncomeTaxOffsetRate.StartAmount);
+                        var fullAmount = string.Format("{0:c0}", Model.LowIncomeTaxOffsetRate.FullTaxOffsetAmount);
+                    }
+                    <td>@string.Format("{0:C0}", 0) ~ @string.Format("{0:C0}", startAmount))</td>
+                    <td>@fullAmount</td>
+                </tr>
+                <tr>
+                    <td>Over @startAmount</td>
+                    <td>@fullAmount 
+                    - 
+                        (Income - @startAmount) X @string.Format("{0:p}", Model.LowIncomeTaxOffsetRate.Rate)
+                        <p>until reaches 0</p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
