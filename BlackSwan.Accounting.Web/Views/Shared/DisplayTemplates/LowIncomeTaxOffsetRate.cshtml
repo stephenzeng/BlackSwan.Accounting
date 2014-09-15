@@ -1,0 +1,33 @@
+﻿@model BlackSwan.Accounting.IndividualIncomeTax.Common.LowIncomeTaxOffsetRate
+
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <strong>@ViewData["Title"]</strong>
+    </div>
+
+    <table class="table table-striped">
+        <tr>
+            <th>Income Range</th>
+            <th>Offset</th>
+        </tr>
+        <tr>
+            @{
+                var startAmount = string.Format("{0:c0}", Model.StartAmount);
+                var fullAmount = string.Format("{0:c0}", Model.FullTaxOffsetAmount);
+            }
+            <td>@string.Format("{0:C0}", 0) ~ @string.Format("{0:C0}", startAmount))</td>
+            <td>@fullAmount</td>
+        </tr>
+        <tr>
+            <td>Over @startAmount</td>
+            <td>
+                @fullAmount
+            -
+            (Income - @startAmount) X @string.Format("{0:p}", Model.Rate)
+            <p>until reaches 0</p>
+        </td>
+    </tr>
+</table>
+
+</div>
+

@@ -1,0 +1,35 @@
+﻿@model IEnumerable<BlackSwan.Accounting.IndividualIncomeTax.Common.ThresholdRate>
+
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <strong>@ViewData["Title"]</strong>
+    </div>
+
+    <table class="table table-striped">
+        <tr>
+            <th>Rage</th>
+            <th>Rate</th>
+        </tr>
+        @{
+            var rates = Model.ToArray();
+
+            for (var i = 0; i < rates.Length; i++)
+            {
+                <tr>
+                    @if (i != rates.Length - 1)
+                    {
+                        <td>@string.Format("{0:C0}", rates[i].StartAmount) ~ @string.Format("{0:C0}", rates[i + 1].StartAmount)</td>
+                    }
+                    else
+                    {
+                        <td>Over @string.Format("{0:C0}", rates[i].StartAmount)</td>
+                    }
+
+                    <td>@string.Format("{0:P}", rates[i].Rate)</td>
+                </tr>
+            }
+        }
+
+    </table>
+</div>
+

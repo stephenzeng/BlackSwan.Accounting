@@ -223,6 +223,8 @@
     <Content Include="Views\TaxRates\Details.cshtml" />
     <Content Include="Views\TaxRates\TaxRatesYear2011.cshtml" />
     <Content Include="Views\TaxRates\TaxRatesYear2014.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\ThresholdRatesTemplate.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\LowIncomeTaxOffsetRate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
