@@ -1,21 +1,28 @@
 ﻿@model BlackSwan.Accounting.IndividualIncomeTax.Year2011To2012.TaxRates
 
-<h3><span class="label label-warning">@Model.Description</span></h3>
+<h3>
+    <span class="label label-warning">
+        <span class="glyphicon glyphicon-plus" style="padding-right: 10px;" onclick="toggleDisplay('#taxRatesYear2011', this);"></span>
+        @Model.Description
+    </span>
+</h3>
 
-<div class="row">
-    <div class="col-md-6">
-        @Html.DisplayFor(m => m.IncomeTaxRates, "ThresholdRatesTemplate", new { Title = Html.DisplayNameFor(m => m.IncomeTaxRates) })
+<div id="taxRatesYear2011" class="hide">
+    <div class="row">
+        <div class="col-md-6">
+            @Html.DisplayFor(m => m.IncomeTaxRates, "ThresholdRatesTemplate", new { Title = Html.DisplayNameFor(m => m.IncomeTaxRates) })
+        </div>
+        <div class="col-md-6">
+            @Html.DisplayFor(m => m.MedicareLevyRates, "ThresholdRatesTemplate", new { Title = Html.DisplayNameFor(m => m.MedicareLevyRates) })
+        </div>
     </div>
-    <div class="col-md-6">
-        @Html.DisplayFor(m => m.MedicareLevyRates, "ThresholdRatesTemplate", new { Title = Html.DisplayNameFor(m => m.MedicareLevyRates) })
-    </div>
-</div>
 
-<div class="row">
-    <div class="col-md-6">
-        @Html.DisplayFor(m => m.FloodLevyRates, "ThresholdRatesTemplate", new { Title = Html.DisplayNameFor(m => m.FloodLevyRates) })
-    </div>
-    <div class="col-md-6">
-        @Html.DisplayFor(m => m.LowIncomeTaxOffsetRate, new { Title = Html.DisplayNameFor(m => m.LowIncomeTaxOffsetRate) })
+    <div class="row">
+        <div class="col-md-6">
+            @Html.DisplayFor(m => m.FloodLevyRates, "ThresholdRatesTemplate", new { Title = Html.DisplayNameFor(m => m.FloodLevyRates) })
+        </div>
+        <div class="col-md-6">
+            @Html.DisplayFor(m => m.LowIncomeTaxOffsetRate, new { Title = Html.DisplayNameFor(m => m.LowIncomeTaxOffsetRate) })
+        </div>
     </div>
 </div>
