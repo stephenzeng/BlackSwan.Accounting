@@ -1,13 +1,13 @@
 ﻿@model BlackSwan.Accounting.IndividualIncomeTax.Year2014To2015.TaxRates
 
 <h3>
-    <span class="label label-warning">
-        <span class="glyphicon glyphicon-plus" style="padding-right: 10px;" onclick="toggleDisplay('#taxRatesYear2014', this);"></span>
+    <a href="#" class="label label-warning" data-toggle="collapse" data-target="#taxRatesYear2014" onclick="togglePlusIcon('#taxRatesYear2014ToggleIcon');">
+        <span id="taxRatesYear2014ToggleIcon" class="glyphicon glyphicon-plus" style="padding-right: 10px;"></span>
         @Model.Description
-    </span>
+    </a>
 </h3>
 
-<div id="taxRatesYear2014" class="hide">
+<div id="taxRatesYear2014" class="collapse">
     <div class="row">
         <div class="col-md-6">
             @Html.DisplayFor(m => m.IncomeTaxRates, "ThresholdRatesTemplate", new { Title = Html.DisplayNameFor(m => m.IncomeTaxRates) })
