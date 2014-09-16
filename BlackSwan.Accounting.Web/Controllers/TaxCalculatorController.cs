@@ -1,4 +1,7 @@
-﻿using System.Web.Mvc;
+﻿using System.Linq;
+using System.Web.Mvc;
+using BlackSwan.Accounting.Common.Indexes;
+using BlackSwan.Accounting.IndividualIncomeTax.Common;
 
 namespace BlackSwan.Accounting.Web.Controllers
 {
@@ -6,7 +9,11 @@ namespace BlackSwan.Accounting.Web.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            var rates = DocumentSession.Query<TaxRatesBase, TaxRatesBaseIndex>()
+                .OrderByDescending(r => r.Year)
+                .ToList();
+
+            return View(rates);
         }
     }
 }

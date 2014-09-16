@@ -1,4 +1,5 @@
-﻿
+﻿@model IEnumerable<BlackSwan.Accounting.IndividualIncomeTax.Common.TaxRatesBase>
+
 @{
     ViewBag.Title = "Tax Calculator";
     Layout = "~/Views/Shared/_LayoutContent.cshtml";
@@ -7,5 +8,22 @@
 <h1 class="page-header">@ViewBag.Title</h1>
 <h3>@ViewBag.Message</h3>
 
-<p class="lead">Coming soon...</p>
-
+<div class="row">
+    <div class="col-md-4">
+        <select class="form-control input-lg">
+            @foreach (var rate in Model)
+            {
+                <option value="@rate.Id">@rate.Description</option>
+            }
+        </select>
+    </div>
+    
+    <div class="col-md-6">
+        <div class="input-group input-group-lg">
+            <input type="text" class="form-control" style="min-width: 280px;" placeholder="Your taxable income amount" />
+            <span class="input-group-btn">
+                <button class="btn btn-success btn-lg">Calculate</button>
+            </span>
+        </div>
+    </div>
+</div>
