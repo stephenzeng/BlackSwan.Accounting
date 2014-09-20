@@ -2,9 +2,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using BlackSwan.Accounting.IndividualIncomeTax.Common;
 
-namespace BlackSwan.Accounting.IndividualIncomeTax.Year2011To2012
+namespace BlackSwan.Accounting.IndividualIncomeTax
 {
-    public class TaxRates : TaxRatesBase
+    public class TaxRates2011 : TaxRatesBase
     {
         [DisplayName("Medicare levy rates")]
         public IEnumerable<ThresholdRate> MedicareLevyRates { get; set; }

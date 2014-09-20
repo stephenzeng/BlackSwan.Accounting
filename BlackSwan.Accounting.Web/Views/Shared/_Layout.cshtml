@@ -24,7 +24,7 @@
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("Tax Calculator", "Index", "TaxCalculator")</li>
-                    <li>@Html.ActionLink("Tax Rates", "Index", "TaxRates")</li>
+                    <li>@Html.ActionLink("Tax Rates", "Index", "TaxRates2011")</li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li>@Html.ActionLink("About", "About", "Home")</li>
@@ -33,7 +33,9 @@
             </div>
         </div>
     </div>
-    @RenderBody()
+    <div id="contentContainer">
+        @RenderBody()
+    </div>
     <footer style="background-color: #d2b48c; padding: 10px; text-align: center;">
         <span style="color: #000;">&copy; @DateTime.Now.Year - Black Swan Accounting - zeng.stephen@gmail.com</span>
     </footer>

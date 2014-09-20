@@ -14,11 +14,11 @@ namespace BlackSwan.Accounting.IndividualIncomeTax
             }
         }
 
-        public static Year2011To2012.TaxRates TaxRates2011
+        public static TaxRates2011 TaxRates2011
         {
             get
             {
-                return new Year2011To2012.TaxRates()
+                return new TaxRates2011()
                 {
                     Id = 2011,
                     Year = 2011,
@@ -54,11 +54,11 @@ namespace BlackSwan.Accounting.IndividualIncomeTax
             }
         }
 
-        public static Year2014To2015.TaxRates TaxRates2014
+        public static TaxRates2014 TaxRates2014
         {
             get
             {
-                return new Year2014To2015.TaxRates()
+                return new TaxRates2014()
                 {
                     Id = 2014,
                     Year = 2014,

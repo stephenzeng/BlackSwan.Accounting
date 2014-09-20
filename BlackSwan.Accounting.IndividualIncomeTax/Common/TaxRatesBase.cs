@@ -11,5 +11,6 @@ namespace BlackSwan.Accounting.IndividualIncomeTax.Common
         public string Description { get; set; }
         [DisplayName("Taxable income tax rates")]
         public IEnumerable<ThresholdRate> IncomeTaxRates { get; set; }
+        public bool Enabled { get; set; }
     }
 }

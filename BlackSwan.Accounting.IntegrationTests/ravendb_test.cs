@@ -3,8 +3,6 @@ using BlackSwan.Accounting.Common.Indexes;
 using BlackSwan.Accounting.IndividualIncomeTax;
 using BlackSwan.Accounting.IndividualIncomeTax.Common;
 using BlackSwan.Accounting.IntegrationTests.Common;
-using Year2014 = BlackSwan.Accounting.IndividualIncomeTax.Year2014To2015;
-using Year2011 = BlackSwan.Accounting.IndividualIncomeTax.Year2011To2012;
 using NUnit.Framework;
 
 namespace BlackSwan.Accounting.IntegrationTests
@@ -20,7 +18,7 @@ namespace BlackSwan.Accounting.IntegrationTests
             query_tax_rates_with_index();
         }
 
-        private void insert_tax_rates_2011()
+       private void insert_tax_rates_2011()
         {
             using (var session = DocumentStore.OpenSession())
             {
@@ -31,8 +29,7 @@ namespace BlackSwan.Accounting.IntegrationTests
             // assert
             using (var session = DocumentStore.OpenSession())
             {
-                Assert.IsNotNull(session.Load<Year2011.TaxRates>("TaxRates/2011"));
-                Assert.IsNotNull(session.Load<Year2011.TaxRates>(2011));
+                Assert.IsNotNull(session.Load<TaxRates2011>(2011));
             }
         }
 
@@ -47,8 +44,7 @@ namespace BlackSwan.Accounting.IntegrationTests
             // assert
             using (var session = DocumentStore.OpenSession())
             {
-                Assert.IsNotNull(session.Load<Year2014.TaxRates>("TaxRates/2014"));
-                Assert.IsNotNull(session.Load<Year2014.TaxRates>(2014));
+                Assert.IsNotNull(session.Load<TaxRates2014>(2014));
             }
         }
 
@@ -57,8 +53,8 @@ namespace BlackSwan.Accounting.IntegrationTests
             // assert
             using (var session = DocumentStore.OpenSession())
             {
-                Assert.AreNotEqual(0, session.Query<Year2011.TaxRates>().Count());
-                Assert.AreNotEqual(0, session.Query<Year2014.TaxRates>().Count());
+                Assert.AreNotEqual(0, session.Query<TaxRates2011>().Count());
+                Assert.AreNotEqual(0, session.Query<TaxRates2014>().Count());
             }
         }
 
@@ -68,7 +64,7 @@ namespace BlackSwan.Accounting.IntegrationTests
             using (var session = DocumentStore.OpenSession())
             {
                 var list = session.Query<TaxRatesBase, TaxRatesBaseIndex>();
-                Assert.AreNotEqual(0, list.Count());
+                Assert.AreEqual(2, list.Count());
 
                 var rate2011 = session.Query<TaxRatesBase, TaxRatesBaseIndex>()
                     .Single(r => r.Year == 2011);

@@ -1,13 +1,18 @@
-﻿using BlackSwan.Accounting.IndividualIncomeTax.Common;
+using BlackSwan.Accounting.IndividualIncomeTax.Common;
 
-namespace BlackSwan.Accounting.IndividualIncomeTax.Year2011To2012
+namespace BlackSwan.Accounting.IndividualIncomeTax
 {
-    public class CalculateResult
+    public class CalculateResult2014 : CalculateResultBase
     {
+        public override string DisplayName
+        {
+            get { return "CalculateResult2014"; }
+        }
+
         public decimal TaxableIncome { get; set; }
         public decimal IncomeTax { get; set; }
         public decimal MedicareLevy { get; set; }
-        public decimal FloodLevy { get; set; }
+        public decimal RepairLevy { get; set; }
         public decimal TaxOffset { get; set; }
 
         public decimal TaxAfterOffset
@@ -17,7 +22,7 @@ namespace BlackSwan.Accounting.IndividualIncomeTax.Year2011To2012
 
         public decimal TotalTaxPayable
         {
-            get { return TaxAfterOffset + MedicareLevy + FloodLevy; }
+            get { return TaxAfterOffset + MedicareLevy + RepairLevy; }
         }
 
         public decimal NetIncome
@@ -27,7 +32,7 @@ namespace BlackSwan.Accounting.IndividualIncomeTax.Year2011To2012
 
         public decimal AverageTaxRate
         {
-            get { return (TotalTaxPayable/TaxableIncome).RoundToRate(); }
+            get { return (TotalTaxPayable / TaxableIncome).RoundToRate(); }
         }
     }
 }

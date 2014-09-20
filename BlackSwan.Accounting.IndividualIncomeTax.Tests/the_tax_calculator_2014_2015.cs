@@ -1,32 +1,30 @@
 ﻿using System;
-using BlackSwan.Accounting.IndividualIncomeTax.Year2014To2015;
 using NUnit.Framework;
 
 namespace BlackSwan.Accounting.IndividualIncomeTax.Tests
 {
     public class the_tax_calculator_2014_2015
     {
-        private readonly TaxRates _taxRates = TaxRatesConfiguration.TaxRates2014;
+        private readonly Calculator2014 _calculator;
+
+        public the_tax_calculator_2014_2015()
+        {
+            _calculator = new Calculator2014(TaxRatesConfiguration.TaxRates2014);
+        }
 
         [Test]
         public void throw_exception_if_not_larger_than_0()
         {
-            // arrange
-            var calculator = new Calculator(_taxRates);
-
             // assert
-            Assert.Catch<ArgumentException>(() => calculator.Calculate(-0.1m));
-            Assert.Catch<ArgumentException>(() => calculator.Calculate(0m));
+            Assert.Catch<ArgumentException>(() => _calculator.Calculate(-0.1m));
+            Assert.Catch<ArgumentException>(() => _calculator.Calculate(0m));
         }
 
         [Test]
         public void calculate_tax_18000()
         {
-            // arrange
-            var calculator = new Calculator(_taxRates);
-
             // act
-            var result = calculator.Calculate(18000.006m);
+            var result = _calculator.Calculate(18000.006m);
 
             // assert
             Assert.AreEqual(18000.01m, result.TaxableIncome);
@@ -43,11 +41,8 @@ namespace BlackSwan.Accounting.IndividualIncomeTax.Tests
         [Test]
         public void calculate_tax_20542()
         {
-            // arrange
-            var calculator = new Calculator(_taxRates);
-
             // act
-            var result = calculator.Calculate(20542.004m);
+            var result = _calculator.Calculate(20542.004m);
 
             // assert
             Assert.AreEqual(20542m, result.TaxableIncome);
@@ -63,11 +58,8 @@ namespace BlackSwan.Accounting.IndividualIncomeTax.Tests
         [Test]
         public void calculate_tax_50000()
         {
-            // arrange
-            var calculator = new Calculator(_taxRates);
-
             // act
-            var result = calculator.Calculate(50000m);
+            var result = _calculator.Calculate(50000m);
 
             // assert
             Assert.AreEqual(50000m, result.TaxableIncome);
@@ -83,11 +75,8 @@ namespace BlackSwan.Accounting.IndividualIncomeTax.Tests
         [Test]
         public void calculate_tax_200000()
         {
-            // arrange
-            var calculator = new Calculator(_taxRates);
-
             // act
-            var result = calculator.Calculate(200000m);
+            var result = _calculator.Calculate(200000m);
 
             // assert
             Assert.AreEqual(200000m, result.TaxableIncome);
