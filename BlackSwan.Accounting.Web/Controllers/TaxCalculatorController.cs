@@ -17,15 +17,6 @@ namespace BlackSwan.Accounting.Web.Controllers
             return View();
         }
 
-        private IEnumerable<SelectListItem> GetTaxRatesList()
-        {
-            var rates = DocumentSession.Query<TaxRatesBase, TaxRatesBaseIndex>()
-                .OrderByDescending(r => r.Year)
-                .ToList();
-
-            return rates.Select(r => new SelectListItem {Text = r.Description, Value = r.Id.ToString()});
-        }
-
         [HttpPost]
         public ActionResult Index(TaxCalculateViewModel viewModel)
         {
@@ -36,6 +27,15 @@ namespace BlackSwan.Accounting.Web.Controllers
             ViewBag.TaxRatesList = GetTaxRatesList();
 
             return View(viewModel);
+        }
+
+        private IEnumerable<SelectListItem> GetTaxRatesList()
+        {
+            var rates = DocumentSession.Query<TaxRatesBase, TaxRatesBaseIndex>()
+                .OrderByDescending(r => r.Year)
+                .ToList();
+
+            return rates.Select(r => new SelectListItem { Text = r.Description, Value = r.Id.ToString() });
         }
     }
 

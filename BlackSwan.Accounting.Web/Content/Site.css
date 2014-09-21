@@ -29,3 +29,9 @@ textarea {
     filter: invert(100%);
 }
 
+.field-validation-error {
+    display: block;
+    color: red;
+    margin: 10px;
+    font-size: 18px;
+}
