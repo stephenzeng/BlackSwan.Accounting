@@ -18,14 +18,14 @@
                 <tr>
                     @if (i != rates.Length - 1)
                     {
-                        <td>@string.Format("{0:C0}", rates[i].StartAmount) ~ @string.Format("{0:C0}", rates[i + 1].StartAmount)</td>
+                        <td>@Html.DisplayFor(m => rates[i].StartAmount) ~ @Html.DisplayFor(m => rates[i + 1].StartAmount)</td>
                     }
                     else
                     {
-                        <td>Over @string.Format("{0:C0}", rates[i].StartAmount)</td>
+                        <td>Over @Html.DisplayFor(m => rates[i].StartAmount)</td>
                     }
 
-                    <td>@string.Format("{0:P}", rates[i].Rate)</td>
+                    <td>@Html.DisplayFor(m => rates[i].Rate)</td>
                 </tr>
             }
         }

@@ -11,19 +11,15 @@
             <th>Offset</th>
         </tr>
         <tr>
-            @{
-                var startAmount = string.Format("{0:c0}", Model.StartAmount);
-                var fullAmount = string.Format("{0:c0}", Model.FullTaxOffsetAmount);
-            }
-            <td>@string.Format("{0:C0}", 0) ~ @string.Format("{0:C0}", startAmount))</td>
-            <td>@fullAmount</td>
+            <td>@string.Format("{0:C0}", 0) ~ @Html.DisplayFor(m => m.StartAmount)</td>
+            <td>@Html.DisplayFor(m => m.FullTaxOffsetAmount)</td>
         </tr>
         <tr>
-            <td>Over @startAmount</td>
+            <td>Over @Html.DisplayFor(m => m.StartAmount)</td>
             <td>
-                @fullAmount
+                @Html.DisplayFor(m => m.FullTaxOffsetAmount)
             -
-            (Income - @startAmount) X @string.Format("{0:p}", Model.Rate)
+            (Income - @Html.DisplayFor(m => m.StartAmount)) X @Html.DisplayFor(m => m.Rate)
             <p>until reaches 0</p>
         </td>
     </tr>

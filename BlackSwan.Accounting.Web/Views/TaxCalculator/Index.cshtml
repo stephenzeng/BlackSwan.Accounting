@@ -19,6 +19,7 @@
         <div class="col-md-6">
             <div class="input-group input-group-lg">
                 @Html.TextBoxFor(m => m.TaxableIncome, new {@class = "form-control", style = "min-width: 280px;", placeholder = "Your taxable income amount"})
+                @Html.ValidationMessageFor(m => m.TaxableIncome)
                 <span class="input-group-btn">
                     <button class="btn btn-success btn-lg">Calculate</button>
                 </span>
