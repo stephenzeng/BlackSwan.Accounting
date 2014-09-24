@@ -38,6 +38,4 @@ namespace BlackSwan.Accounting.Web.Controllers
             return rates.Select(r => new SelectListItem { Text = r.Description, Value = r.Id.ToString() });
         }
     }
-
-
 }

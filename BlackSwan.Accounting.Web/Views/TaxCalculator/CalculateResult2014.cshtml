@@ -1,8 +1,34 @@
 ﻿@model BlackSwan.Accounting.IndividualIncomeTax.CalculateResult2014
 
-<div class="col-md-6">
-
-    @Html.LabelFor(m => m.TotalTaxPayable): @string.Format("{0:C0}", @Model.TotalTaxPayable)
-
-</div>
+<h3 class="page-header">Your tax calculation reuslt</h3>
+<ul class="list-group col-md-6">
+    <li class="list-group-item" style="font-weight: bold;font-size: 18px;">
+        <span>@Html.DisplayNameFor(m => m.TaxableIncome):</span>
+        <span class="pull-right">@Html.DisplayFor(m => m.TaxableIncome)</span>
+    </li>
+    <li class="list-group-item">
+        <span>@Html.DisplayNameFor(m => m.TaxOffset):</span>
+        <span class="pull-right">@Html.DisplayFor(m => m.TaxOffset)</span>
+    </li>
+    <li class="list-group-item">
+        <span>@Html.DisplayNameFor(m => m.MedicareLevy):</span>
+        <span class="pull-right">@Html.DisplayFor(m => m.MedicareLevy)</span>
+    </li>
+    <li class="list-group-item">
+        <span>@Html.DisplayNameFor(m => m.RepairLevy):</span>
+        <span class="pull-right">@Html.DisplayFor(m => m.RepairLevy)</span>
+    </li>
+    <li class="list-group-item" style="font-weight: bold;font-size: 16px;">
+        <span>@Html.DisplayNameFor(m => m.TotalTaxPayable):</span>
+        <span class="pull-right">@Html.DisplayFor(m => m.TotalTaxPayable)</span>
+    </li>
+    <li class="list-group-item" style="font-weight: bold;font-size: 18px;">
+        <span>@Html.DisplayNameFor(m => m.NetIncome):</span>
+        <span class="pull-right">@Html.DisplayFor(m => m.NetIncome)</span>
+    </li>
+    <li class="list-group-item">
+        <span>@Html.DisplayNameFor(m => m.AverageTaxRate):</span>
+        <span class="pull-right">@Html.DisplayFor(m => m.AverageTaxRate)</span>
+    </li>
+</ul>
 
