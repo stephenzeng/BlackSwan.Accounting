@@ -181,14 +181,23 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AngularApp\app.js" />
+    <Content Include="AngularApp\black-swan-footer.html" />
+    <Content Include="AngularApp\black-swan-header.html" />
+    <Content Include="AngularApp\income-tax-rates.html" />
+    <Content Include="AngularApp\TaxRates.html" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\_bootstrap.min.css" />
     <Content Include="Content\favicon.png" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\angular-mocks.js" />
+    <Content Include="Scripts\angular.js" />
+    <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\angular.min.js.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

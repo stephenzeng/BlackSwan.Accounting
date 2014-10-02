@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html lang="en" ng-app="blackSwanAccounting">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tax Rates - Black Swan Accounting</title>
+    <link rel="icon" type="image/png" href="../Content/favicon.png" />
+    <link rel="stylesheet" href="../Content/bootstrap.css" />
+    <link rel="stylesheet" href="../Content/Site.css" />
+    <script src="../Scripts/modernizr-2.6.2.js"></script>
+</head>
+<body>
+    <black-swan-header></black-swan-header>
+
+    <div class="container body-content" style="padding-bottom: 80px;">
+        <h1 class="page-header">Tax Rates</h1>
+        <h3></h3>
+        <h3>
+            <a href="#" class="label label-warning" data-toggle="collapse" data-target="#taxRatesYear2014" onclick="togglePlusIcon('#taxRatesYear2014ToggleIcon');">
+                <span id="taxRatesYear2014ToggleIcon" class="glyphicon glyphicon-plus" style="padding-right: 10px;"></span>
+                Finacial year 2014 - 2015
+            </a>
+        </h3>
+
+        <div id="taxRatesYear2014" class="collapse">
+            <div class="row">
+                <div class="col-md-6">
+                    <income-tax-rates></income-tax-rates>
+                </div>
+                <div class="col-md-6">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <black-swan-footer></black-swan-footer>
+
+    <script src="../Scripts/jquery-1.10.2.js"></script>
+    <script src="../Scripts/bootstrap.js"></script>
+    <script src="../Scripts/blackswan.js"></script>
+    <script src="../Scripts/angular.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
